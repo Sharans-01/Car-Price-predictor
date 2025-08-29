@@ -28,11 +28,11 @@ export default function HomePage() {
       Check Car Price
     </Link>
     <a 
-      href="#about"
-      className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition"
-    >
-      Learn More
-    </a>
+  href="#about"
+  className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition"
+>
+  Learn More
+</a>
   </div>
 </section>
 

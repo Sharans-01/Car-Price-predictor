@@ -19,15 +19,15 @@ const CarForm = ({ setPredictedPrice }) => {
     "Maruti","Skoda","Honda","Hyundai","Toyota","Ford","Renault",
     "Mahindra","Tata","Chevrolet","Datsun","Jeep","Mercedes-Benz",
     "Mitsubishi","Audi","Volkswagen","BMW","Nissan","Lexus",
-    "Jaguar","Land","MG","Volvo","Daewoo","Kia","Fiat","Force",
+    "Jaguar","Land","MG","Volvo","Daewoo","Kia","Force",
     "Ambassador","Ashok","Isuzu","Opel"
   ];
 
-  const fuelTypes = ["Petrol", "Diesel", "CNG", "LPG", "Electric"];
+  const fuelTypes = ["Petrol", "Diesel", "CNG", "LPG"];
   const sellerTypes = ["Individual", "Dealer", "Trustmark Dealer"];
   const transmissionTypes = ["Manual", "Automatic"];
   const ownerTypes = ["First Owner", "Second Owner", "Third Owner", "Fourth & Above Owner", "Test Drive Car"];
-  const seatOptions = [2, 4, 5, 6, 7, 8];
+  const seatOptions = [5, 6, 7, 8, 9, 10];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +68,7 @@ const CarForm = ({ setPredictedPrice }) => {
         </div>
         <div className="flex flex-col">
           <label className="font-semibold text-blue-800 mb-1">Year: <span className="text-blue-600">{formData.year}</span></label>
-          <input type="range" min="1994" max="2025" value={formData.year} onChange={(e) => handleSliderChange("year", e.target.value)} className="w-full h-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg cursor-pointer transition-all"/>
+          <input type="range" min="1994" max="2024" value={formData.year} onChange={(e) => handleSliderChange("year", e.target.value)} className="w-full h-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg cursor-pointer transition-all"/>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const CarForm = ({ setPredictedPrice }) => {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="flex flex-col">
           <label className="font-semibold text-blue-800 mb-1">KM Driven: <span className="text-blue-600">{formData.km_driven}</span></label>
-          <input type="range" min="0" max="200000" step="1000" value={formData.km_driven} onChange={(e) => handleSliderChange("km_driven", e.target.value)} className="w-full h-2 bg-gradient-to-r from-green-400 to-green-600 rounded-lg cursor-pointer transition-all"/>
+          <input type="range" min="11" max="200000" step="1000" value={formData.km_driven} onChange={(e) => handleSliderChange("km_driven", e.target.value)} className="w-full h-2 bg-gradient-to-r from-green-400 to-green-600 rounded-lg cursor-pointer transition-all"/>
         </div>
         <div className="flex flex-col">
           <label className="font-semibold text-blue-800 mb-1">Fuel Type</label>
