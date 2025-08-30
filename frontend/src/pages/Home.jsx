@@ -6,35 +6,58 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-    <section id="hero"
-  className="relative bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center px-6 text-center"
-  style={{ backgroundImage: "url('/car.jpg')" }}
->
-  <div className="absolute inset-0 bg-black/50"></div> {/* Overlay for readability */}
 
-  <h1 className="relative text-4xl md:text-6xl font-bold mb-4 z-10">
-    Find Your Car’s True Value
-  </h1>
-
-  <p className="relative text-lg md:text-xl max-w-2xl mb-8 z-10">
-    Get instant, AI-powered insights into your car’s worth before buying or selling.
-  </p>
-
-  <div className="relative flex gap-4 z-10">
-    <Link 
-      to="/carform"
-      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition"
+    <section
+      id="hero"
+      className="relative bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center px-6 text-center overflow-hidden"
+      style={{ backgroundImage: "url('/car.jpg')" }}
     >
-      Check Car Price
-    </Link>
-    <a 
-  href="#about"
-  className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition"
->
-  Learn More
-</a>
-  </div>
-</section>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Content */}
+      <motion.h1
+        className="relative text-4xl md:text-6xl font-bold mb-4 z-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        Find Your Car’s True Value
+      </motion.h1>
+
+      <motion.p
+        className="relative text-lg md:text-xl max-w-2xl mb-8 z-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+      >
+        Get instant, AI-powered insights into your car’s worth before buying or
+        selling.
+      </motion.p>
+
+      <motion.div
+        className="relative flex gap-4 z-10"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+      >
+        <Link
+          to="/carform"
+          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
+        >
+          Check Car Price
+        </Link>
+
+        <a
+          href="#about"
+          className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition-transform transform hover:scale-105"
+        >
+          Learn More
+        </a>
+      </motion.div>
+    </section>
+  
+
 
 
 

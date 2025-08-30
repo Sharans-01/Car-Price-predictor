@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 const CarForm = ({ setPredictedPrice }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -38,20 +40,25 @@ const CarForm = ({ setPredictedPrice }) => {
     setFormData({ ...formData, [name]: Number(value) });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("http://127.0.0.1:8000/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      setPredictedPrice(data.predicted_price);
-    } catch (error) {
-      console.error("Prediction error:", error);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch(`${API_BASE}/predict`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch prediction");
     }
-  };
+
+    const data = await res.json();
+    setPredictedPrice(data.predicted_price);
+  } catch (error) {
+    console.error("Prediction error:", error);
+  }
+};
 
   return (
     <form className="max-w-3xl mx-auto p-8 bg-gradient-to-r from-blue-50 to-blue-100 rounded-3xl shadow-2xl space-y-6 mt-24" onSubmit={handleSubmit}>
