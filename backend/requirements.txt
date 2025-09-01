@@ -73,8 +73,8 @@ scipy==1.15.2
 setuptools==80.3.0
 SQLAlchemy==2.0.40
 starlette==0.47.3
-tensorboard==2.18.0
-tensorboard-data-server==0.7.2
+tensorboard
+tensorboard-data-server
 tensorflow
 
 
