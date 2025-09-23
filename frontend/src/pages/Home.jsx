@@ -1,144 +1,197 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Car, BarChart3, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Search,  DollarSign, Target } from "lucide-react";
 
+const values = [
+  {
+    id: 1,
+    icon: <Search className="w-10 h-10 text-blue-600" />,
+    title: "Accuracy",
+    description: "AI trained on real market data to give you precise predictions.",
+  },
+  {
+    id: 2,
+    icon: <Zap className="w-10 h-10 text-yellow-500" />,
+    title: "Speed",
+    description: "Get your car's value instantly, no delays or guesswork.",
+  },
+  {
+    id: 3,
+    icon: <DollarSign className="w-10 h-10 text-green-600" />,
+    title: "Save Money",
+    description: "Avoid underpricing or overpaying with reliable insights.",
+  },
+  {
+    id: 4,
+    icon: <Target className="w-10 h-10 text-indigo-600" />,
+    title: "Simplicity",
+    description: "A user-friendly interface designed for everyone.",
+  },
+];
+const steps = [
+  {
+    id: 1,
+    title: "Enter Car Details",
+    description: "Provide details like brand, year, fuel type, and mileage.",
+    icon: "🚗",
+  },
+  {
+    id: 2,
+    title: "AI Analyzes Data",
+    description: "Our AI model compares real-time market trends and past sales.",
+    icon: "🤖",
+  },
+  {
+    id: 3,
+    title: "Get Price Prediction",
+    description: "Receive accurate, trusted insights to buy or sell confidently.",
+    icon: "💰",
+  },
+];
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* Hero Section */}
+  {/* Hero Section */}
+  <section
+    id="hero"
+    className="relative bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center px-6 text-center overflow-hidden"
+    style={{ backgroundImage: "url('/car.jpg')" }}
+  >
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-black/50"></div>
 
-    <section
-      id="hero"
-      className="relative bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center px-6 text-center overflow-hidden"
-      style={{ backgroundImage: "url('/car.jpg')" }}
+    {/* Content */}
+    <motion.h1
+      className="relative text-3xl sm:text-4xl md:text-6xl font-bold mb-4 z-10"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      Find Your Car’s True Value
+    </motion.h1>
 
-      {/* Content */}
-      <motion.h1
-        className="relative text-4xl md:text-6xl font-bold mb-4 z-10"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+    <motion.p
+      className="relative text-base sm:text-lg md:text-xl max-w-2xl mb-8 z-10 px-2"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+    >
+      Get instant, AI-powered insights into your car’s worth before buying or
+      selling.
+    </motion.p>
+
+    <motion.div
+      className="relative flex flex-col sm:flex-row gap-4 z-10 w-full sm:w-auto justify-center"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+    >
+      <Link
+        to="/carform"
+        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105 text-center"
       >
-        Find Your Car’s True Value
-      </motion.h1>
+        Check Car Price
+      </Link>
 
-      <motion.p
-        className="relative text-lg md:text-xl max-w-2xl mb-8 z-10"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+      <a
+        href="#about"
+        className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition-transform transform hover:scale-105 text-center"
       >
-        Get instant, AI-powered insights into your car’s worth before buying or
-        selling.
-      </motion.p>
+        Learn More
+      </a>
+    </motion.div>
+  </section>
 
-      <motion.div
-        className="relative flex gap-4 z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-      >
-        <Link
-          to="/carform"
-          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-transform transform hover:scale-105"
-        >
-          Check Car Price
-        </Link>
 
-        <a
-          href="#about"
-          className="px-6 py-3 bg-white/90 text-blue-700 font-semibold rounded-lg shadow-lg hover:bg-white transition-transform transform hover:scale-105"
-        >
-          Learn More
-        </a>
-      </motion.div>
-    </section>
-  
 
 
 
 
 {/* About Section */}
-<section id="about" className="py-24 bg-gradient-to-b from-gray-50 to-white relative">
-  <div className="max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-16 items-center">
-    
-    {/* Image Card Side */}
-    <div className="flex justify-center">
-      <div className="relative group">
-        <img 
-  src="/about.jpg" 
-  alt="About CarValue" 
-  className="rounded-3xl shadow-2xl w-full max-w-md h-[290px] object-cover transform group-hover:scale-105 transition duration-500"
-/>
+<section id="about" className="py-24 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <h2 className="text-4xl font-extrabold mb-14 text-gray-900">
+          Why <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">CarValue?</span>
+        </h2>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-blue-600/20 to-indigo-500/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          {values.map((value, index) => (
+            <motion.div
+              key={value.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500"
+            >
+              <div className="flex justify-center mb-4">{value.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+              <p className="text-gray-600">{value.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
-
-    {/* Content Side */}
-    <div className="text-center md:text-left">
-      <h2 className="text-4xl font-extrabold mb-6 text-gray-900 leading-snug">
-        About <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">CarValue</span>
-      </h2>
-      <p className="text-lg text-gray-600 leading-relaxed mb-6">
-        <span className="font-semibold text-blue-600">CarValue</span> is your intelligent companion for discovering the 
-        <span className="font-semibold"> true value of your car</span>.  
-        Using <span className="font-semibold text-indigo-600">AI-powered predictions</span>, we analyze real-time 
-        market trends and past sales data to help you buy or sell at the best price.  
-      </p>
-      <p className="text-lg text-gray-600 leading-relaxed mb-8">
-        Save time, skip the guesswork, and make 
-        <span className="font-semibold text-green-600"> confident decisions</span> with accurate, trusted insights.
-      </p>
-      
-      
-     
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
       {/* Features Section */}
 <section id="features" className="py-20 bg-gradient-to-b from-gray-50 to-gray-100 px-6">
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
-      Powerful <span className="text-blue-600">Features</span>
-    </h2>
-    <p className="text-gray-600 max-w-2xl mx-auto mb-14">
-      Discover how CarValue makes car price prediction accurate, fast, and easy to use.
-    </p>
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    {/* Left Side - Illustration */}
+    <div className="flex justify-center">
+  <img
+    src="/feature.jpg"
+    alt="Car Features"
+    className="w-80 md:w-full drop-shadow-xl rounded-2xl transition-transform duration-500 hover:scale-105 hover:rotate-1 hover:shadow-2xl"
+  />
+</div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {/* Card 1 */}
-      <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 hover:scale-105">
-        <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-6">
-          <Car className="w-8 h-8" />
-        </div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">Quick Prediction</h3>
-        <p className="text-gray-600">Get instant car price estimates with just a few clicks.</p>
-      </div>
 
-      {/* Card 2 */}
-      <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 hover:scale-105">
-        <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-green-100 text-green-600 mb-6">
-          <BarChart3 className="w-8 h-8" />
-        </div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">Data-Driven</h3>
-        <p className="text-gray-600">Powered by real-world datasets for high prediction accuracy.</p>
-      </div>
+    {/* Right Side - Features List */}
+    <div>
+      <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
+        Powerful <span className="text-blue-600">Features</span>
+      </h2>
+      <p className="text-gray-600 mb-10 max-w-md">
+        Discover how CarValue makes car price prediction accurate, fast, 
+        and easy to use.
+      </p>
 
-      {/* Card 3 */}
-      <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 hover:scale-105">
-        <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 mb-6">
-          <Zap className="w-8 h-8" />
+      <div className="space-y-6">
+        {/* Feature 1 */}
+        <div className="flex items-start space-x-4">
+          <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+            <Car className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800">Quick Prediction</h3>
+            <p className="text-gray-600 text-sm">Get instant car price estimates with just a few clicks.</p>
+          </div>
         </div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">Easy to Use</h3>
-        <p className="text-gray-600">Enjoy a smooth and intuitive interface designed for everyone.</p>
+
+        {/* Feature 2 */}
+        <div className="flex items-start space-x-4">
+          <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
+            <BarChart3 className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800">Data-Driven</h3>
+            <p className="text-gray-600 text-sm">Powered by real-world datasets for high prediction accuracy.</p>
+          </div>
+        </div>
+
+        {/* Feature 3 */}
+        <div className="flex items-start space-x-4">
+          <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-100 text-yellow-600">
+            <Zap className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800">Easy to Use</h3>
+            <p className="text-gray-600 text-sm">Enjoy a smooth and intuitive interface designed for everyone.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -146,57 +199,43 @@ export default function HomePage() {
 
 
      {/* How It Works Section */}
-<section id="how-it-works" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-  <h2 className="text-4xl font-bold text-center mb-16">How It Works</h2>
+<section id="how-it-works" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12 text-center">
+        <h2 className="text-4xl font-extrabold mb-14 text-gray-900">
+          How <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">CarValue</span> Works
+        </h2>
 
-  <div className="relative max-w-4xl mx-auto">
-    {/* Vertical Line */}
-    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-500 transform -translate-x-1/2"></div>
 
-    {/* Step 1 */}
-    <div className="mb-16 flex items-center w-full">
-      <div className="w-1/2 pr-8 text-right">
-        <h3 className="text-xl font-semibold">Enter Car Details</h3>
-        <p className="text-gray-600 mt-2">
-          Fill in information like brand, year, mileage, and fuel type.
-        </p>
-      </div>
-      <div className="relative">
-        <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white rounded-full shadow-lg text-xl font-bold">1</div>
-      </div>
-      <div className="w-1/2"></div>
-    </div>
+          <div className="space-y-16">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className={`relative flex items-center ${
+                  index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                }`}
+              >
+                {/* Step Card */}
+                <div className="bg-white shadow-lg rounded-2xl p-6 max-w-sm mx-6 hover:scale-105 transition duration-500">
+                  <div className="text-4xl mb-3">{step.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                  <p className="text-gray-600 mt-2">{step.description}</p>
+                </div>
 
-    {/* Step 2 */}
-    <div className="mb-16 flex items-center w-full">
-      <div className="w-1/2"></div>
-      <div className="relative">
-        <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white rounded-full shadow-lg text-xl font-bold">2</div>
+                {/* Dot */}
+                <div className="w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-md absolute left-1/2 transform -translate-x-1/2"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="w-1/2 pl-8">
-        <h3 className="text-xl font-semibold">AI Analyzes Data</h3>
-        <p className="text-gray-600 mt-2">
-          Our model processes the details to calculate market value.
-        </p>
-      </div>
-    </div>
-
-    {/* Step 3 */}
-    <div className="mb-16 flex items-center w-full">
-      <div className="w-1/2 pr-8 text-right">
-        <h3 className="text-xl font-semibold">Get Price Estimate</h3>
-        <p className="text-gray-600 mt-2">
-          Receive accurate and instant resale value predictions.
-        </p>
-      </div>
-      <div className="relative">
-        <div className="w-12 h-12 flex items-center justify-center bg-blue-600 text-white rounded-full shadow-lg text-xl font-bold">3</div>
-      </div>
-      <div className="w-1/2"></div>
-    </div>
-  </div>
-
-  {/* Quote + CTA */}
+      {/* Quote + CTA */}
   <div className="text-center mt-12">
     <p className="text-lg italic text-gray-700 mb-6">
       "Empowering Choices with Price Insights – Know your car’s true worth in seconds."
@@ -208,7 +247,10 @@ export default function HomePage() {
       Predict Now
     </a>
   </div>
-</section>
+    </section>
+
+  
+
 
 
     {/* Footer */}
