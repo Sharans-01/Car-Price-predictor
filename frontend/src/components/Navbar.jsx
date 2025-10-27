@@ -84,15 +84,41 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden mt-4 flex flex-col space-y-4 text-center bg-gradient-to-b from-blue-900 to-blue-950 rounded-xl p-6 shadow-xl font-sans">
-          <button className="text-white hover:text-green-300 transition-colors" onClick={() => handleNavClick("hero")}>Home</button>
-          <button className="text-white hover:text-green-300 transition-colors" onClick={() => handleNavClick("about")}>About</button>
-          <button className="text-white hover:text-green-300 transition-colors" onClick={() => handleNavClick("features")}>Features</button>
-          <button className="text-white hover:text-green-300 transition-colors" onClick={() => handleNavClick("how-it-works")}>How it Works</button>
-          <Link className="text-white hover:text-green-300 transition-colors" to="/carform" onClick={() => setMenuOpen(false)}>Predict</Link>
-        </div>
-      )}
+{menuOpen && (
+  <div className="md:hidden mt-4 flex flex-col space-y-4 text-left bg-gradient-to-b from-blue-900 to-blue-950 rounded-xl p-6 shadow-xl font-sans">
+    <button
+      className="text-white hover:text-green-300 transition-colors w-full text-left"
+      onClick={() => handleNavClick("hero")}
+    >
+      Home
+    </button>
+    <button
+      className="text-white hover:text-green-300 transition-colors w-full text-left"
+      onClick={() => handleNavClick("about")}
+    >
+      About
+    </button>
+    <button
+      className="text-white hover:text-green-300 transition-colors w-full text-left"
+      onClick={() => handleNavClick("features")}
+    >
+      Features
+    </button>
+    <button
+      className="text-white hover:text-green-300 transition-colors w-full text-left"
+      onClick={() => handleNavClick("how-it-works")}
+    >
+      How it Works
+    </button>
+    <Link
+      to="/carform"
+      onClick={() => setMenuOpen(false)}
+      className="text-white hover:text-green-300 transition-colors w-full text-left"
+    >
+      Predict
+    </Link>
+  </div>
+)}
     </nav>
   );
 }
