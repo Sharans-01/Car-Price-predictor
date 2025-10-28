@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   ArrowRight, Car, BarChart3, Zap, Search, DollarSign, Target,
   Sparkles, TrendingUp, Clock, Shield, ChevronRight, CheckCircle2
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   const [hoveredFeature, setHoveredFeature] = useState(null);
@@ -99,7 +100,7 @@ export default function HomePage() {
   ];
 
   const stats = [
-    { label: "Predictions Made", value: "50K+", icon: TrendingUp },
+    { label: "Predictions Made", value: "20K+", icon: TrendingUp },
     { label: "Accuracy Rate", value: "95%", icon: Target },
     { label: "Avg Response Time", value: "<2s", icon: Clock },
     { label: "Happy Users", value: "10K+", icon: Sparkles }
@@ -183,15 +184,14 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            <motion.a
-              href="/carform"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2"
-            >
-              Check Car Price
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
+           <Link
+  to="/carform"
+  className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2"
+>
+  Check Car Price
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</Link>
+
 
             <motion.a
               href="#about"
@@ -274,56 +274,78 @@ export default function HomePage() {
               Why Choose Us
             </motion.span>
 
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-              Why{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                CarValue
-              </span>
-              ?
-            </h2>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 text-center">
+  Why{" "}
+  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+    CarValue
+  </span>
+  ?
+</h2>
 
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the future of car valuation with cutting-edge technology
-            </p>
+<p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto text-center px-4">
+  Experience the future of car valuation with cutting-edge technology.
+</p>
+
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="group relative"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-opacity duration-500 -z-10`} />
-                
-                <div className={`relative h-full bg-gradient-to-br ${value.bgColor} rounded-3xl shadow-lg p-8 border border-white/50 transition-all duration-500 group-hover:shadow-2xl`}>
-                  <motion.div
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                    className={`inline-flex items-center justify-center w-20 h-20 mb-6 bg-white rounded-2xl shadow-lg text-gradient-to-r ${value.color}`}
-                  >
-                    {React.cloneElement(value.icon, { 
-                      className: `w-10 h-10 ${value.color.includes('blue') ? 'text-blue-600' : value.color.includes('yellow') ? 'text-yellow-600' : value.color.includes('green') ? 'text-green-600' : 'text-indigo-600'}`
-                    })}
-                  </motion.div>
+       <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4 px-4 sm:px-0">
+  {values.map((value, index) => (
+    <motion.div
+      key={value.id}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      className="group relative"
+    >
+      {/* Hover Glow Effect */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-100 blur-xl rounded-3xl transition-opacity duration-500 -z-10`}
+      />
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {value.title}
-                  </h3>
+      {/* Card */}
+      <div
+        className={`relative h-full bg-gradient-to-br ${value.bgColor} rounded-3xl shadow-lg p-6 sm:p-8 border border-white/50 transition-all duration-500 group-hover:shadow-2xl`}
+      >
+        {/* Icon */}
+        <motion.div
+          whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 bg-white rounded-2xl shadow-lg"
+        >
+          {React.cloneElement(value.icon, {
+            className: `w-8 h-8 sm:w-10 sm:h-10 ${
+              value.color.includes("blue")
+                ? "text-blue-600"
+                : value.color.includes("yellow")
+                ? "text-yellow-600"
+                : value.color.includes("green")
+                ? "text-green-600"
+                : "text-indigo-600"
+            }`,
+          })}
+        </motion.div>
 
-                  <p className="text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
+        {/* Title */}
+        <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
+          {value.title}
+        </h3>
 
-                  <div className={`absolute -bottom-2 -right-2 w-24 h-24 bg-gradient-to-br ${value.color} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-500`} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Description */}
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+          {value.description}
+        </p>
+
+        {/* Decorative Glow */}
+        <div
+          className={`absolute -bottom-2 -right-2 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br ${value.color} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-500`}
+        />
+      </div>
+    </motion.div>
+  ))}
+</div>
+
         </div>
       </section>
 
@@ -334,41 +356,43 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ duration: 0.3 }}
-                className="relative rounded-3xl overflow-hidden shadow-2xl"
-              >
-                <img
-                  src="/feature.jpg"
-                  alt="Car Features"
-                  className="w-full rounded-3xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20" />
-              </motion.div>
+           <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+  className="relative flex justify-center items-center px-2 sm:px-4"
+>
+  {/* Image container */}
+  <motion.div
+    whileHover={{ scale: 1.05, rotate: 2 }}
+    transition={{ duration: 0.3 }}
+    className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl w-full max-w-md sm:max-w-lg md:max-w-xl"
+  >
+    <img
+      src="/feature.jpg"
+      alt="Car Features"
+      className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
+    />
+    <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20" />
+  </motion.div>
 
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-2xl p-4 border-4 border-blue-100"
-              >
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  <div>
-                    <div className="text-sm font-bold text-gray-900">AI Verified</div>
-                    <div className="text-xs text-gray-500">95% Accuracy</div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+  {/* Floating badge */}
+  <motion.div
+    animate={{ y: [0, -10, 0] }}
+    transition={{ duration: 3, repeat: Infinity }}
+    className="absolute top-2 right-2 sm:-top-6 sm:-right-6 bg-white rounded-xl sm:rounded-2xl shadow-2xl p-2 sm:p-4 border-2 sm:border-4 border-blue-100"
+  >
+    <div className="flex items-center gap-2">
+      <CheckCircle2 className="w-4 h-4 sm:w-6 sm:h-6 text-green-500" />
+      <div>
+        <div className="text-xs sm:text-sm font-bold text-gray-900">AI Verified</div>
+        <div className="text-[10px] sm:text-xs text-gray-500">95% Accuracy</div>
+      </div>
+    </div>
+  </motion.div>
+</motion.div>
+
 
             {/* Features List */}
             <motion.div
@@ -381,13 +405,17 @@ export default function HomePage() {
                 Our Features
               </span>
 
-              <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                Powerful <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Features</span>
-              </h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 text-center sm:text-left">
+  Powerful{" "}
+  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+    Features
+  </span>
+</h2>
 
-              <p className="text-xl text-gray-600 mb-10">
-                Discover how CarValue makes car price prediction accurate, fast, and easy to use.
-              </p>
+<p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-10 text-center sm:text-left">
+  Discover how CarValue makes car price prediction accurate, fast, and easy to use.
+</p>
+
 
               <div className="space-y-6">
                 {features.map((feature, index) => (
@@ -448,9 +476,14 @@ export default function HomePage() {
               Simple Process
             </span>
 
-            <h2 className="text-5xl font-bold mb-6 text-gray-900">
-              How <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">CarValue</span> Works
-            </h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 text-center ">
+  How{" "}
+  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+    CarValue
+  </span>{" "}
+  Works
+</h2>
+
 
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Get your car's value in three simple steps
@@ -532,15 +565,18 @@ export default function HomePage() {
                 <p className="text-2xl italic text-white mb-8 font-light">
                   "Empowering Choices with Price Insights – Know your car's true worth in seconds."
                 </p>
-                <motion.a
-                  href="/carform"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-10 py-5 bg-white text-blue-600 font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg"
-                >
-                  Predict Now
-                  <Sparkles className="w-5 h-5" />
-                </motion.a>
+                <motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <Link
+    to="/carform"
+    className="inline-flex items-center gap-2 px-10 py-5 bg-white text-blue-600 font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg"
+  >
+    Predict Now
+    <Sparkles className="w-5 h-5" />
+  </Link>
+</motion.div>
               </div>
             </div>
           </motion.div>
