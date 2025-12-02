@@ -21,7 +21,7 @@ const CarForm = ({ setPredictedPrice }) => {
     mileage: 15,
     engine: 1200,
     max_power: 85,
-    seats: 5,
+    seats: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedSteps, setCompletedSteps] = useState([]);
@@ -190,7 +190,7 @@ const CarForm = ({ setPredictedPrice }) => {
   transition={{ duration: 2, repeat: Infinity }}
   className="inline-block mb-4"
 >
-  <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600" />
+  {/* <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600" /> */}
 </motion.div>
 
 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3 sm:mb-4 text-center">
